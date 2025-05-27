@@ -19,7 +19,7 @@ def test_customer_name_length():
         Customer("")
     with pytest.raises(Exception):
         Customer("ThisNameIsWayTooLong")
-    Customer("Bob")  # Should not raise
+    Customer("Bob") 
 
 def test_customer_has_orders():
     """Test Customer class has method orders() that returns list of its orders"""

@@ -12,16 +12,16 @@ class Customer:
     @name.setter
     def name(self, value):
         if not isinstance(value, str):
-            raise Exception("Name must be a string")
+            raise ValueError("Name must be a string")
         if not (1 <= len(value) <= 15):
-            raise Exception("Name must be between 1 and 15 characters")
+            raise ValueError("Name must be between 1 and 15 characters")
         self._name = value
 
     def orders(self):
         return [order for order in Order.all if order.customer == self]
     
     def coffees(self):
-        from coffee import Coffee  # Lazy import to avoid circularity
+        from coffee import Coffee  
         return list({order.coffee for order in self.orders()})
     
     def create_order(self, coffee, price):
@@ -30,9 +30,9 @@ class Customer:
 
     @classmethod
     def most_aficionado(cls, coffee):
-        from coffee import Coffee  # Lazy import
+        from coffee import Coffee 
         if not isinstance(coffee, Coffee):
-            raise Exception("Must provide Coffee instance")
+            raise ValueError("Must provide Coffee instance")
             
         customers_spending = {}
         for order in Order.all:

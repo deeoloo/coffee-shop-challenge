@@ -17,7 +17,7 @@ def test_coffee_name_length():
     """Test Coffee class validates name is at least 3 characters"""
     with pytest.raises(Exception):
         Coffee("a")
-    Coffee("abc")  # Should not raise
+    Coffee("abc") 
 
 def test_coffee_name_immutable():
     """Test Coffee name cannot be changed after initialization"""
